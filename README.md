@@ -1,19 +1,29 @@
-# WIP
+# `Haskell <> Nix <> Bazel`
+
+Template for a Haskell application built with Nix and Bazel.
+
+Start by dropping into a Nix shell.
 
 ```sh
-$ nix-shell
-...
-
-$ bazel build :main
-...
-Setup.hs: Missing dependency on a foreign library:
-* Missing (or bad) header file: zlib.h
-* Missing (or bad) C library: z
-...
+nix-shell
 ```
 
-Wot
+Build it 👷‍♀️
 
-## TODO
+```sh
+bazel build :main
+```
 
-Explain more things
+Run it 🏃
+
+```sh
+bazel run :main
+```
+
+Hack it 👩‍💻
+
+```
+ghcid
+```
+
+Prof it.

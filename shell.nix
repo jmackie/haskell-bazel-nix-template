@@ -1,11 +1,15 @@
 { pkgs ? import ./nix/nixpkgs { } }:
+#                ^^^^^^^^^
+# NOTE: bazel will use this same nixpkgs pin
 
 pkgs.mkShell {
   buildInputs = [
     pkgs.bazel
-    # Development helpers
+
+    # Useful stuff for development
     pkgs.ghcid
-    # Formatters 
+
+    # (formatters)
     pkgs.nixfmt
     pkgs.haskellPackages.ormolu
   ];

@@ -1,5 +1,7 @@
+# Set all target’s visibility in this package to "public".
 package(default_visibility = ["//visibility:public"])
 
+# Load rules_haskell rules.
 load(
     "@rules_haskell//haskell:defs.bzl",
     "haskell_binary",
@@ -8,6 +10,9 @@ load(
     "haskell_toolchain_library",
 )
 
+# haskell_toolchain_library can access builtin GHC packages
+# and assign them a bazel target name, so that they
+# can be referenced as dependencies.
 haskell_toolchain_library(name = "base")
 
 haskell_library(
@@ -16,8 +21,9 @@ haskell_library(
     srcs = glob(["src/**/*.hs"]),
     deps = [
         ":base",
-        "@stackage//:text",
-        "@stackage//:warp",  # TODO: why does this not compile
+        "@stackage//:wai",
+        "@stackage//:http-types",
+        "@stackage//:warp",
     ],
 )
 
