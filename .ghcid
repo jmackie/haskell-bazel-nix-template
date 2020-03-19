@@ -1,0 +1,1 @@
+--command "bazel run :repl" --restart BUILD.bazel --restart WORKSPACE

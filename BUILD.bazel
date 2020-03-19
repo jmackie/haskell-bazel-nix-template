@@ -1,0 +1,39 @@
+package(default_visibility = ["//visibility:public"])
+
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_binary",
+    "haskell_library",
+    "haskell_repl",
+    "haskell_toolchain_library",
+)
+
+haskell_toolchain_library(name = "base")
+
+haskell_library(
+    name = "lib",
+    src_strip_prefix = "src",
+    srcs = glob(["src/**/*.hs"]),
+    deps = [
+        ":base",
+        "@stackage//:text",
+        "@stackage//:warp",  # TODO: why does this not compile
+    ],
+)
+
+haskell_binary(
+    name = "main",
+    srcs = [":Main.hs"],
+    deps = [
+        ":lib",
+    ],
+)
+
+# Repl target for ghcid
+haskell_repl(
+    name = "repl",
+    deps = [
+        ":main",
+        ":lib",
+    ],
+)
