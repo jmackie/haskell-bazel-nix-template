@@ -5,6 +5,7 @@ pkgs.mkShell {
     pkgs.bazel
     # Development helpers
     pkgs.ghcid
+    pkgs.python38
     # Formatters 
     pkgs.nixfmt
     pkgs.haskellPackages.ormolu
